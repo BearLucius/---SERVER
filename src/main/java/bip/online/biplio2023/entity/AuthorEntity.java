@@ -27,15 +27,15 @@ public class AuthorEntity {
 private Long id;
     @NotBlank()
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Фамилия автора", example = "Тест1")
+    @Schema(description = "Фамилия автора", example = "Тест")
     private String lastname;
     @NotBlank
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Имя автора", example = "Тест2")
+    @Schema(description = "Имя автора", example = "Тест")
     private String name;
     @NotBlank
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Отчество автора", example = "Тест3")
+    @Schema(description = "Отчество автора", example = "Тест")
     private String surname;
     @JsonIgnore
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
