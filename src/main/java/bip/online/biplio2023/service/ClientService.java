@@ -1,7 +1,7 @@
 package bip.online.biplio2023.service;
 
-import bip.online.biplio2023.entity.AuthorEntity;
-import bip.online.biplio2023.repository.AuthorRepo;
+import bip.online.biplio2023.entity.ClientEntity;
+import bip.online.biplio2023.repository.ClientRepo;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,19 +13,19 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 @Validated
-public class AuthorService {
-    private final AuthorRepo repo;
+public class ClientService {
+    private final ClientRepo repo;
 
-    public List<AuthorEntity> findAll() {
+    public List<ClientEntity> findAll() {
 return repo.findAll();
     }
-    public Optional<AuthorEntity> findById(Long id) {
+    public Optional<ClientEntity> findById(Long id) {
         return repo.findById(id);
     }
-        public AuthorEntity save (@Valid AuthorEntity data) {
+        public ClientEntity save (@Valid ClientEntity data) {
             return repo.save(data);
         }
-            public void update (AuthorEntity data) {
+            public void update (ClientEntity data) {
                 repo.save(data);
             }
     public void delete (Long id) {

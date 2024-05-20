@@ -1,6 +1,5 @@
 package bip.online.biplio2023.entity;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,8 +14,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "books")
-public class    BookEntity {
+@Table(name = "receipt")
+public class ReceiptEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,15 +24,11 @@ public class    BookEntity {
     private String bookName;
     @NotNull
     @ManyToOne
-    @JoinColumn(name ="author_id")
-    private AuthorEntity author;
+    @JoinColumn(name ="client_id")
+    private ClientEntity client;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "publisher_id")
-    private PublisherEntity publisher;
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    private GenreEntity genre;//:Жанр
+    @JoinColumn(name = "serviceCost_id")
+    private ServiceCostEntity serviceCost;
     private String year;
 }

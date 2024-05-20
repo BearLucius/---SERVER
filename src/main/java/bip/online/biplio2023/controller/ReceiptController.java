@@ -2,43 +2,42 @@ package bip.online.biplio2023.controller;
 
 
 
-import bip.online.biplio2023.entity.BookEntity;
+import bip.online.biplio2023.entity.ReceiptEntity;
 import bip.online.biplio2023.responce.BaseResponse;
 import bip.online.biplio2023.responce.DataResponse;
 import bip.online.biplio2023.responce.ListResponse;
 
-import bip.online.biplio2023.service.BookService;
+import bip.online.biplio2023.service.ReceiptService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-@Tag(name="Книги", description="Содержит методы для работы с книгами")
+@Tag(name="Квитанции", description="Содержит методы для работы с квитанциями")
 @RestController
-@RequestMapping("api/v1/books")
+@RequestMapping("api/v1/receipts")
 @AllArgsConstructor
-public class BookController {
-    private final BookService service;
+public class ReceiptController {
+    private final ReceiptService service;
     @Operation(
-            summary = "Вывод Всех книг",
-            description = "Позволяет вывести все книги, что есть в базе"
+            summary = "Вывод Всех квитанций",
+            description = "Позволяет вывести все квитанции, что есть в базе"
     )
     @GetMapping("/all")
     public ResponseEntity<BaseResponse> getAll() {
         return ResponseEntity.ok(
-                new ListResponse<BookEntity>(true, "Список книг", service.findAll()));
+                new ListResponse<ReceiptEntity>(true, "Список квитанций", service.findAll()));
     }
     @Operation(
-            summary = "Поиск книги по id",
-            description = "Позволяет искать книгу по его id"
+            summary = "Поиск квитанции по id",
+            description = "Позволяет искать квитанцию по его id"
     )
     @GetMapping
     public ResponseEntity<BaseResponse> by_id(@RequestParam Long id) {
         try {
         return ResponseEntity.ok(
-                new DataResponse<BookEntity>(true, "Найден следующий нига",
+                new DataResponse<ReceiptEntity>(true, "Найдена следующая квитанция",
                         service.findById(id).orElseThrow()));
         } catch (RuntimeException e) {
             return ResponseEntity.ok(
@@ -48,45 +47,45 @@ public class BookController {
 ///
     @GetMapping("/get")
     public  ResponseEntity<BaseResponse> getBookname(@RequestParam String bookName){
-        return ResponseEntity.ok(new ListResponse(service.getBookName(bookName)));
+        return ResponseEntity.ok(new ListResponse(service.getReceiptName(bookName)));
     }
     @Operation(
-            summary = "Добавить книгу",
-            description = "Позволяет добавлять книгу в базу"
+            summary = "Добавить квитанцию",
+            description = "Позволяет добавлять квитанции в базу"
     )
     @PostMapping
-    public ResponseEntity<BaseResponse> save(@RequestBody BookEntity books) {
+    public ResponseEntity<BaseResponse> save(@RequestBody ReceiptEntity books) {
         try {
             return ResponseEntity.ok(
-                    new DataResponse<BookEntity>(true, "Книга сохранена", service.save(books)));
+                    new DataResponse<ReceiptEntity>(true, "Квитанция сохранена", service.save(books)));
         } catch (RuntimeException e) {
             return ResponseEntity.ok(
                     new BaseResponse(false, e.getMessage()));
         }
     } @Operation(
-            summary = "Изменить книгу",
-            description = "Позволяет редактировать и изменять книгу"
+            summary = "Изменить квитанцию",
+            description = "Позволяет редактировать и изменять квитанцию"
     )
         @PutMapping
-        public ResponseEntity<BaseResponse> update (@RequestBody BookEntity books){
+        public ResponseEntity<BaseResponse> update (@RequestBody ReceiptEntity books){
             try {
         service.update(books);
             return ResponseEntity.ok(
-                    new BaseResponse(true, "Книга сохранен"));
+                    new BaseResponse(true, "Квитанция сохранен"));
         } catch (RuntimeException e) {
         return ResponseEntity.ok(
                 new BaseResponse(false, e.getMessage()));
     }
 }@Operation(
-            summary = "Удалить  книгу",
-            description = "Позволяет удалить книгу из базы"
+            summary = "Удалить квитанцию",
+            description = "Позволяет удалить квитанцию из базы"
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<BaseResponse> delete(@PathVariable Long id) {
         try {
             service.delete(id);
             return ResponseEntity.ok(
-                    new BaseResponse(true, "Книга удален"));
+                    new BaseResponse(true, "Квитанция удален"));
         } catch (RuntimeException e) {
             return ResponseEntity.ok(
                     new BaseResponse(false, e.getMessage()));

@@ -1,44 +1,41 @@
 package bip.online.biplio2023.controller;
 
 
-import bip.online.biplio2023.entity.PublisherEntity;
+import bip.online.biplio2023.entity.ServiceCostEntity;
 import bip.online.biplio2023.responce.BaseResponse;
 import bip.online.biplio2023.responce.DataResponse;
 import bip.online.biplio2023.responce.ListResponse;
 
-
-
-
-import bip.online.biplio2023.service.PublisherService;
+import bip.online.biplio2023.service.ServiceCostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-@Tag(name="Публишер", description="Содержит методы для работы с издателем")
+@Tag(name="Стоимость услуги", description="Содержит методы для работы с ???")
 @RestController
-@RequestMapping("api/v1/publisher")
+@RequestMapping("api/v1/servcost")
 @AllArgsConstructor
-public class PublisherController {
-    private final PublisherService service;
+public class ServiceCostController {
+    private final ServiceCostService serviceCost;
     @Operation(
-            summary = "Вывод всех издателей",
-            description = "Позволяет получить  всех издателей в базе"
+            summary = "Вывод ???",
+            description = "Позволяет получить ??? в базе"
     )
     @GetMapping("/all")
     public ResponseEntity<BaseResponse> getAll() {
         return ResponseEntity.ok(
-                new ListResponse<PublisherEntity>(true, "Список Издательств", service.findAll()));
+                new ListResponse<ServiceCostEntity>(true, "Список ???", serviceCost.findAll()));
     }
     @Operation(
-            summary = "поиск изадтеля по id",
-            description = "Позволяет получить издателя по его id"
+            summary = "поиск ??? по id",
+            description = "Позволяет получить ??? по его id"
     )
     @GetMapping
     public ResponseEntity<BaseResponse> by_id(@RequestParam Long id) {
         try {
         return ResponseEntity.ok(
-                new DataResponse<PublisherEntity>(true, "Найден следующий издатель", service.findById(id).orElseThrow()));
+                new DataResponse<ServiceCostEntity>(true, "Найден следующий ???", serviceCost.findById(id).orElseThrow()));
     }catch (RuntimeException e) {
             return ResponseEntity.ok(
                     new BaseResponse(false, e.getMessage()));
@@ -46,14 +43,14 @@ public class PublisherController {
         }
     }
     @Operation(
-            summary = "добавить издателя",
-            description = "Позволяет добавить нового издателя в базу"
+            summary = "добавить ???",
+            description = "Позволяет добавить ??? в базу"
     )
     @PostMapping
-    public ResponseEntity<BaseResponse> save(@RequestBody PublisherEntity publisher) {
+    public ResponseEntity<BaseResponse> save(@RequestBody ServiceCostEntity servCost) {
         try{
         return ResponseEntity.ok(
-                new DataResponse<PublisherEntity>(true, "Издатель сохранен", service.save(publisher)));
+                new DataResponse<ServiceCostEntity>(true, "??? сохранен", serviceCost.save(servCost)));
     }catch (RuntimeException e) {
         return ResponseEntity.ok(
                 new BaseResponse(false, e.getMessage()));
@@ -65,11 +62,11 @@ public class PublisherController {
             description = "Позволяет вносить изменения в издателя"
     )
     @PutMapping
-    public ResponseEntity<BaseResponse> update(@RequestBody PublisherEntity publisher) {
+    public ResponseEntity<BaseResponse> update(@RequestBody ServiceCostEntity servCost) {
        try{
-        service.update(publisher);
+        serviceCost.update(servCost);
         return ResponseEntity.ok(
-                new BaseResponse(true, "Издатель сохранен"));
+                new BaseResponse(true, "??? сохранен"));
     }catch (RuntimeException e) {
         return ResponseEntity.ok(
                 new BaseResponse(false, e.getMessage()));
@@ -77,15 +74,15 @@ public class PublisherController {
     }
 }
     @Operation(
-            summary = "Удалить издателя",
-            description = "Позволяет удалить издателя из базы"
+            summary = "Удалить ???",
+            description = "Позволяет удалить ??? из базы"
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<BaseResponse> delete(@PathVariable Long id) {
         try {
-            service.delete(id);
+            serviceCost.delete(id);
             return ResponseEntity.ok(
-                    new BaseResponse(true, "Издатель удален"));
+                    new BaseResponse(true, "??? удален"));
         } catch (RuntimeException e) {
             return ResponseEntity.ok(
                     new BaseResponse(false, e.getMessage()));

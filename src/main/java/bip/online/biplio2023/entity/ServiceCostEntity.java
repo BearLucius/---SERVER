@@ -17,8 +17,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "publishers")
-public class PublisherEntity {
+@Table(name = "serviceCost")
+public class ServiceCostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,11 +27,11 @@ public class PublisherEntity {
     @Schema(description = "Название Издания", example = "Тест")
     private String title;
     @ManyToOne
-    @JoinColumn (name = "city_id")
-    private  CityEntity city;
+    @JoinColumn (name = "service_id")
+    private ServiceEntity service;
     @JsonIgnore
-    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
-    private List<BookEntity> books;
+    @OneToMany(mappedBy = "serviceCost", cascade = CascadeType.ALL)
+    private List<ReceiptEntity> clients;
 
 
 }

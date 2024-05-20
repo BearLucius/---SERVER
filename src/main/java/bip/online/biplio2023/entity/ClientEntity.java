@@ -17,9 +17,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "authors")
-@Schema(description = "Инфа о авторе")
-public class AuthorEntity {
+@Table(name = "clients")
+@Schema(description = "Инфа о клиенте")
+public class ClientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,17 +27,17 @@ public class AuthorEntity {
 private Long id;
     @NotBlank()
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Фамилия автора", example = "Тест")
+    @Schema(description = "Фамилия клиента", example = "Тест")
     private String lastname;
     @NotBlank
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Имя автора", example = "Тест")
+    @Schema(description = "Имя клиента", example = "Тест")
     private String name;
     @NotBlank
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Отчество автора", example = "Тест")
+    @Schema(description = "Отчество клиента", example = "Тест")
     private String surname;
     @JsonIgnore
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-private List<BookEntity> books;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+private List<ReceiptEntity> clients;
 }

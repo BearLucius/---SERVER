@@ -17,16 +17,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "genre")
-public class GenreEntity {
+@Table(name = "ServiceList")
+public class ServiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Название жанра", example = "Тест")
+    @Schema(description = "Название услуги", example = "Тест")
     private String title;
     @JsonIgnore
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
-    private List<BookEntity> books;
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
+    private List<ServiceCostEntity> publisher;
 }

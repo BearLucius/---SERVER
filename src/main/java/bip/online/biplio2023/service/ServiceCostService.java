@@ -1,7 +1,7 @@
 package bip.online.biplio2023.service;
 
-import bip.online.biplio2023.entity.CityEntity;
-import bip.online.biplio2023.repository.CityRepo;
+import bip.online.biplio2023.entity.ServiceCostEntity;
+import bip.online.biplio2023.repository.ServiceCostRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +9,27 @@ import java.util.List;
 import java.util.Optional;
 @Service
 @AllArgsConstructor
-public class CityService {
+public class ServiceCostService {
 
-    private final CityRepo repo;
+    private final ServiceCostRepo repo;
 
-    public List<CityEntity> findAll() {
+    public List<ServiceCostEntity> findAll() {
         return repo.findAll();
     }
-    public Optional<CityEntity> findById(Long id) {
+    public Optional<ServiceCostEntity> findById(Long id) {
         return repo.findById(id);
     }
-    public CityEntity save (CityEntity data) {
+    public ServiceCostEntity save (ServiceCostEntity data) {
         return repo.save(data);
     }
-    public void update (CityEntity data) {
+    public void update (ServiceCostEntity data) {
         repo.save(data);
     }
 
     public void delete (Long id) {
         repo.deleteById(id);
     }
+
 }
+
 
