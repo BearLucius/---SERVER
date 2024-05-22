@@ -11,3 +11,5 @@ class Biplio2023ApplicationTests {
 	}
 
 }
+
+// http://localhost:2825/swagger-ui/index.html#/

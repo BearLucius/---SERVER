@@ -23,8 +23,7 @@ public class ServiceCostEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    @Schema(description = "Название Издания", example = "Тест")
+    @Schema(description = "Стоимость", example = "Тест")
     private String title;
     @ManyToOne
     @JoinColumn (name = "service_id")

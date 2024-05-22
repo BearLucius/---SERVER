@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReceiptRepo extends JpaRepository<ReceiptEntity,Long> {
-  List<ReceiptEntity>findByBookName(String bookName);
+  List<ReceiptEntity> findByReceipts(String receipts);
 }

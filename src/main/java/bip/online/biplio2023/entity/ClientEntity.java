@@ -38,6 +38,6 @@ private Long id;
     @Schema(description = "Отчество клиента", example = "Тест")
     private String surname;
     @JsonIgnore
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
 private List<ReceiptEntity> clients;
 }
