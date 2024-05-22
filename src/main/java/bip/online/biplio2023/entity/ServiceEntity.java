@@ -28,5 +28,5 @@ public class ServiceEntity {
     private String title;
     @JsonIgnore
     @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
-    private List<ServiceCostEntity> publisher;
+    private List<ServiceCostEntity> serviceCost;
 }

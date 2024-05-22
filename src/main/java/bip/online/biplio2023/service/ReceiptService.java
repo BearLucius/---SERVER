@@ -17,15 +17,15 @@ public class ReceiptService {
     public Optional<ReceiptEntity> findById(Long id) {
         return repo.findById(id);
     }
-    public ReceiptEntity save (ReceiptEntity data) {
-        return repo.save(data);
+    public ReceiptEntity save (ReceiptEntity date) {
+        return repo.save(date);
     }
-    public void update (ReceiptEntity data) {
-        repo.save(data);
+    public void update (ReceiptEntity date) {
+        repo.save(date);
     }
 
-    public List<ReceiptEntity> getReceiptName(String bookName){
-        return repo.findByBookName(bookName);
+    public List<ReceiptEntity> getReceiptName(String receipts){
+        return repo.findByReceipts(receipts);
     }
     public void delete (Long id) {
         repo.deleteById(id);

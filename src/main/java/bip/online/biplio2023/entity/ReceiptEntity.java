@@ -21,14 +21,14 @@ public class ReceiptEntity {
     private Long id;
     @NotBlank()
     @Pattern(regexp ="[А-Я][а-я]{1,20}")
-    private String bookName;
+    private String receipts;
     @NotNull
     @ManyToOne
     @JoinColumn(name ="client_id")
-    private ClientEntity client;
+    private ClientEntity clients;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "serviceCost_id")
+    @JoinColumn(name = "service_id")
     private ServiceCostEntity serviceCost;
-    private String year;
+    private String date;
 }
